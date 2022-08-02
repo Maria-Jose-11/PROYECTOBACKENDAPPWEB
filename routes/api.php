@@ -27,6 +27,43 @@ Route::prefix('v1')->group(function ()
             Route::post('/avatar', [AvatarController::class, 'store'])->name('profile.avatar');
 
         });
+
+        Route::prefix("director")->group(function ()
+        {
+            Route::controller(DirectorController::class)->group(function () {
+                Route::get('/', 'index');
+                Route::post('/create', 'store');
+                Route::get('/{user}', 'show');
+                Route::post('/{user}/update', 'update');
+                Route::get('/{user}/destroy', 'destroy');
+            });
+        });
+
+
+        Route::prefix("guard")->group(function ()
+        {
+            Route::controller(GuardController::class)->group(function () {
+                Route::get('/', 'index');
+                Route::post('/create', 'store');
+                Route::get('/{user}', 'show');
+                Route::post('/{user}/update', 'update');
+                Route::get('/{user}/destroy', 'destroy');
+            });
+        });
+
+
+        Route::prefix("prisoner")->group(function ()
+        {
+            Route::controller(PrisonerController::class)->group(function () {
+                Route::get('/', 'index');
+                Route::post('/create', 'store');
+                Route::get('/{user}', 'show');
+                Route::post('/{user}/update', 'update');
+                Route::get('/{user}/destroy', 'destroy');
+            });
+        });
+
+
     });
 });
 
